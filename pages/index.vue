@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-100">
+  <div :class="['min-h-screen', 'flex', 'flex-col', 'bg-gray-100', isDarkMode ? 'dark:bg-dark-bg' : '']">
     <header class="flex items-center justify-between py-6 lg:py-10 container mx-auto">
       <a href="/" class="flex items-center">
         <span class="mr-2">
@@ -95,7 +95,7 @@
               <img src="/assets/img/long-arrow-right.png" class="ml-3" alt="arrow right" />
             </a>
           </div>
-          <div class="pt-8">
+          <div class="pt-8"  v-if="articles.length > 1">
             <div v-for="(article, index) in articles.slice(0, 2)" :key="index" class="border-b border-grey-lighter pt-8 pb-8">
               <span
                 class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green">{{ article.genre }}</span>
@@ -110,6 +110,9 @@
                 <p class="font-body font-light text-primary dark:text-white">{{ article.short_description }}</p>
               </div>
             </div>
+          </div>
+          <div v-else>
+            Loading...
           </div>
         </section>
     
@@ -138,18 +141,21 @@
       </div>
     </footer>
   </div>
+  <div></div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useTheme } from '~/composables/useTheme';
 
 const isMobileMenuOpen = ref(false);
-const isDarkMode = ref(false);
+// const isDarkMode = ref(false);
+const { isDarkMode, themeSwitch, themeInit } = useTheme();
 const articles = ref([]);
 
-const themeSwitch = () => {
-  isDarkMode.value = !isDarkMode.value;
-};
+onMounted(() => {
+  themeInit();  // Initialize the theme based on the local storage or system settings
+});
 
 const fetchArticles = async () => {
   try {

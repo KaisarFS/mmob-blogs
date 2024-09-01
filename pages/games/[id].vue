@@ -1,5 +1,5 @@
 <template>
-  <div>
+   <div :class="['min-h-screen', 'flex', 'flex-col', 'bg-gray-100', isDarkMode ? 'dark:bg-dark-bg' : '']">
     <div v-if="game">
       <div class="container mx-auto">
         <div class="flex items-center justify-between py-6 lg:py-10">
@@ -152,22 +152,25 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useTheme } from '~/composables/useTheme';
 
 const game = ref(null);
 const isMobileMenuOpen = ref(false);
-const isDarkMode = ref(false);
+// const isDarkMode = ref(false);
+const { isDarkMode, themeSwitch, themeInit } = useTheme();
 
 const route = useRoute();
+
+onMounted(() => {
+  themeInit();
+});
+
 
 onMounted(async () => {
   const res = await fetch(`https://cors-anywhere.herokuapp.com/https://www.mmobomb.com/api1/game?id=${route.params.id}`);
   const data = await res.json();
   game.value = data;
 });
-
-function themeSwitch() {
-  isDarkMode.value = !isDarkMode.value;
-}
 </script>
 
 

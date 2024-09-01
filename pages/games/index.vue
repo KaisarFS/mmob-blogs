@@ -1,5 +1,5 @@
 <template>
-  <div>
+ <div :class="['min-h-screen', 'flex', 'flex-col', 'bg-gray-100', isDarkMode ? 'dark:bg-dark-bg' : '']">
     <!-- Header Section -->
     <header class="flex items-center justify-between py-6 lg:py-10 container mx-auto">
       <NuxtLink to="/" class="flex items-center">
@@ -77,7 +77,7 @@
         </form>
 
        
-        <div class="pt-8 lg:pt-12">
+        <div class="pt-8 lg:pt-12" v-if="games.length > 1">
           <div v-for="game in games" :key="game.id" class="border-b border-grey-lighter pt-10 pb-8">
             <span class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green">
               {{ game.genre }}
@@ -95,6 +95,9 @@
               </p>
             </div>
           </div>
+        </div>
+        <div v-else>
+          Loading...
         </div>
 
 
@@ -147,6 +150,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useTheme } from '~/composables/useTheme';
 
 const posts = ref([]);
 const navItems = [
@@ -156,19 +160,11 @@ const navItems = [
 ];
 
 const isMobileMenuOpen = ref(false);
-const isDarkMode = ref(false);
+const { isDarkMode, themeSwitch, themeInit } = useTheme();
 const games = ref([]);
 
-const themeSwitch = () => {
-  isDarkMode.value = !isDarkMode.value;
-};
-
 onMounted(() => {
-  posts.value = [
-    { id: 1, title: 'Understanding Vue 3', category: 'Tutorial', date: 'August 30, 2024', readTime: '5' },
-    { id: 2, title: 'Tailwind CSS Tips and Tricks', category: 'Tips', date: 'August 25, 2024', readTime: '7' },
-    { id: 3, title: 'Building Modern Web Apps', category: 'Guide', date: 'August 20, 2024', readTime: '6' }
-  ];
+  themeInit();
 });
 
 onMounted(async () => {
