@@ -39,6 +39,7 @@ module.exports = {
     },
 
     colors: {
+      'dark-bg': '#1a202c',
       transparent: "transparent",
       primary: "#072344",
       secondary: "#00aaa1",
