@@ -48,13 +48,7 @@
                   class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">New
                   Game</a>
               </li>
-              <!-- <li class="group relative mr-6 mb-1">
-            <div
-              class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow">
-            </div>
-            <a href="/contact"
-              class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">Contact</a>
-          </li> -->
+           
               <li>
                 <i class="bx cursor-pointer text-3xl text-primary dark:text-white" @click="themeSwitch"
                   :class="isDarkMode ? 'bxs-sun' : 'bxs-moon'"></i>
@@ -73,13 +67,10 @@
                 <a href="/" class="mb-3 block px-2 font-body text-lg font-medium text-white">Intro</a>
               </li>
               <li class="">
-                <a href="/blog" class="mb-3 block px-2 font-body text-lg font-medium text-white">Blog</a>
+                <a href="/games" class="mb-3 block px-2 font-body text-lg font-medium text-white">Blog</a>
               </li>
               <li class="">
-                <a href="/uses" class="mb-3 block px-2 font-body text-lg font-medium text-white">Uses</a>
-              </li>
-              <li class="">
-                <a href="/contact" class="mb-3 block px-2 font-body text-lg font-medium text-white">Contact</a>
+                <a href="/games/new" class="mb-3 block px-2 font-body text-lg font-medium text-white">New Game</a>
               </li>
             </ul>
           </div>
@@ -181,34 +172,9 @@ function themeSwitch() {
 
 
 <style scoped>
-/* Ensure images are responsive and rounded */
 img {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  /* Adjust the radius value as needed */
 }
 </style>
-
-<!-- <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    hljs.initHighlightingOnLoad();
-  });
-</script> -->
-
-
-<!-- 
-
-<script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-
-const game = ref(null);
-const route = useRoute();
-
-onMounted(async () => {
-  const res = await fetch(`https://cors-anywhere.herokuapp.com/https://www.mmobomb.com/api1/game?id=${route.params.id}`);
-  const data = await res.json();
-  game.value = data;
-});
-</script> -->

@@ -1,24 +1,37 @@
-# Nuxt 3 Minimal Starter
+# Please read this documentation carefully!
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+## Installation
 
-Make sure to install the dependencies:
+1. Clone the repository:
 
-```bash
-# npm
-npm install
+   ```bash
+   git clone https://github.com/KaisarFS/mmob-blogs
+   cd mmob-blogs or the downloaded repository
+   ```
 
-# pnpm
-pnpm install
+2. Make sure to install the dependencies:
 
-# yarn
-yarn install
+   ```bash
+   # npm
+   npm install
 
-# bun
-bun install
-```
+   # pnpm
+   pnpm install
+
+   # yarn
+   yarn install
+
+   # bun
+   bun install
+   ```
+
+3. Open this link https://cors-anywhere.herokuapp.com/corsdemo then click the `Request temporary access to the demo server` untill **`You currently have temporary access to the demo server`** showed up.
+
+   ![alt text](image.png)
+
+   **IMPORTANT NOTES: if in the future the API error / status 200 but does not display anything / is affected by CORS again. then do the same as installation step 2.**
 
 ## Development Server
 
