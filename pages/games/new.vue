@@ -1,18 +1,4 @@
 <template>
-  <!-- <div>
-    <h1 class="text-3xl font-bold">Add New Game</h1>
-    <form @submit.prevent="submitForm" class="mt-4 space-y-4">
-      <div>
-        <label class="block">Game Title</label>
-        <input v-model="form.title" class="w-full p-2 border rounded" placeholder="Enter game title" />
-      </div>
-      <div>
-        <label class="block">Description</label>
-        <textarea v-model="form.description" class="w-full p-2 border rounded" placeholder="Enter description"></textarea>
-      </div>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded">Submit</button>
-    </form>
-  </div> -->
 
 
   <div>
@@ -73,7 +59,7 @@
       </div>
       <div
         class="pointer-events-none fixed inset-0 z-50 flex bg-black bg-opacity-80 opacity-0 transition-opacity lg:hidden"
-        :class="isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''">
+        :class="{ 'opacity-100 pointer-events-auto': isMobileMenuOpen, 'opacity-0 pointer-events-none': !isMobileMenuOpen }">
         <div class="ml-auto w-2/3 bg-green p-4 md:w-1/3">
           <i class="bx bx-x absolute top-0 right-0 mt-4 mr-4 text-4xl text-white" @click="isMobileMenuOpen = false"></i>
           <ul class="mt-8 flex flex-col">
@@ -81,13 +67,10 @@
               <a href="/" class="mb-3 block px-2 font-body text-lg font-medium text-white">Intro</a>
             </li>
             <li class="">
-              <a href="/blog" class="mb-3 block px-2 font-body text-lg font-medium text-white">Blog</a>
+              <a href="/games" class="mb-3 block px-2 font-body text-lg font-medium text-white">Blog</a>
             </li>
             <li class="">
-              <a href="/uses" class="mb-3 block px-2 font-body text-lg font-medium text-white">Uses</a>
-            </li>
-            <li class="">
-              <a href="/contact" class="mb-3 block px-2 font-body text-lg font-medium text-white">Contact</a>
+              <a href="/games/new" class="mb-3 block px-2 font-body text-lg font-medium text-white">New Game</a>
             </li>
           </ul>
         </div>
@@ -95,7 +78,6 @@
       <div class="pt-12 pb-12 lg:pt-12 pb-12">
 
         <div class="flex items-center justify-center">
-    <!-- Author: FormBold Team -->
     <div class="mx-auto w-full max-w-[550px] bg-white">
         <form class="py-4 px-9">
             <div class="mb-5">
@@ -141,7 +123,7 @@
                 <div class="mb-5 rounded-md bg-[#F5F7FB] py-4 px-8">
                     <div class="flex items-center justify-between">
                         <span class="truncate pr-3 text-base font-medium text-[#07074D]">
-                            banner-design.png
+                            img.png
                         </span>
                         <button class="text-[#07074D]">
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -160,7 +142,7 @@
                 <div class="rounded-md bg-[#F5F7FB] py-4 px-8">
                     <div class="flex items-center justify-between">
                         <span class="truncate pr-3 text-base font-medium text-[#07074D]">
-                            banner-design.png
+                            img-2.png
                         </span>
                         <button class="text-[#07074D]">
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -175,14 +157,14 @@
                         </button>
                     </div>
                     <div class="relative mt-5 h-[6px] w-full rounded-lg bg-[#E2E5EF]">
-                        <div class="absolute left-0 right-0 h-full w-[75%] rounded-lg bg-[#6A64F1]"></div>
+                        <div class="absolute left-0 right-0 h-full w-[75%] rounded-lg bg-[#007C85]"></div>
                     </div>
                 </div>
             </div>
 
             <div>
                 <button
-                    class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                    class="hover:shadow-form w-full rounded-md bg-[#007C85] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                     Publish
                 </button>
             </div>
@@ -222,8 +204,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
+const isMobileMenuOpen = ref(false);
 const form = ref({
   title: '',
   description: ''
