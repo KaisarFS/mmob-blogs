@@ -27,7 +27,7 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
    bun install
    ```
 
-3. Open this link https://cors-anywhere.herokuapp.com/corsdemo then click the `Request temporary access to the demo server` untill **`You currently have temporary access to the demo server`** showed up.
+3. Open this link https://cors-anywhere.herokuapp.com/corsdemo then click the `Request temporary access to the demo server` untill **`You currently have temporary access to the demo server`** showed up (you might need to click it more than 1).
 
    ![alt text](image.png)
 
